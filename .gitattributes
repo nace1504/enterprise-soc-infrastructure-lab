@@ -1,0 +1,90 @@
+# =========================================================
+# Enterprise SOC Infrastructure Lab: .gitattributes
+# Thống nhất line ending giữa Windows và Linux.
+# Phải khớp với .editorconfig: mặc định LF; PowerShell, bat, cmd dùng CRLF.
+# Phần mở rộng binary dùng lớp ký tự [Aa] để khớp cả chữ hoa khi
+# core.ignorecase=false (Linux).
+# =========================================================
+
+* text=auto eol=lf
+
+*.md    text eol=lf
+*.sh    text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+*.xml   text eol=lf
+*.conf  text eol=lf
+*.php   text eol=lf
+*.dist  text eol=lf
+*.txt   text eol=lf
+*.csv   text eol=lf
+*.svg   text eol=lf
+.env.example text eol=lf
+
+*.ps1   text eol=crlf
+*.psm1  text eol=crlf
+*.psd1  text eol=crlf
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# Hình ảnh và tài liệu
+*.[Pp][Nn][Gg]       binary
+*.[Jj][Pp][Gg]       binary
+*.[Jj][Pp][Ee][Gg]   binary
+*.[Gg][Ii][Ff]       binary
+*.[Bb][Mm][Pp]       binary
+*.[Ii][Cc][Oo]       binary
+*.[Ww][Ee][Bb][Pp]   binary
+*.[Pp][Dd][Ff]       binary
+*.[Dd][Oo][Cc]       binary
+*.[Dd][Oo][Cc][Xx]   binary
+*.[Xx][Ll][Ss]       binary
+*.[Xx][Ll][Ss][Xx]   binary
+*.[Pp][Pp][Tt]       binary
+*.[Pp][Pp][Tt][Xx]   binary
+*.[Vv][Ss][Dd][Xx]   binary
+
+# Video
+*.[Mm][Pp]4          binary
+*.[Mm][Oo][Vv]       binary
+
+# Ổ đĩa máy ảo và image
+*.[Vv][Mm][Dd][Kk]   binary
+*.[Vv][Mm][Ee][Mm]   binary
+*.[Vv][Mm][Ss][Nn]   binary
+*.[Vv][Mm][Ss][Ss]   binary
+*.[Nn][Vv][Rr][Aa][Mm] binary
+*.[Vv][Hh][Dd]       binary
+*.[Vv][Hh][Dd][Xx]   binary
+*.[Vv][Dd][Ii]       binary
+*.[Qq][Cc][Oo][Ww]2  binary
+*.[Oo][Vv][Aa]       binary
+*.[Ii][Ss][Oo]       binary
+*.[Ii][Mm][Gg]       binary
+
+# Packet capture và log nhị phân của Windows
+*.[Pp][Cc][Aa][Pp]       binary
+*.[Pp][Cc][Aa][Pp][Nn][Gg] binary
+*.[Cc][Aa][Pp]           binary
+*.[Ee][Vv][Tt][Xx]       binary
+*.[Ee][Tt][Ll]           binary
+*.[Dd][Mm][Pp]           binary
+
+# File nén
+*.[Zz][Ii][Pp]   binary
+*.7[Zz]          binary
+*.[Rr][Aa][Rr]   binary
+*.[Tt][Aa][Rr]   binary
+*.[Gg][Zz]       binary
+*.[Tt][Gg][Zz]   binary
+
+# Dữ liệu nhạy cảm dạng nhị phân (đã bị .gitignore chặn, khai báo để an toàn)
+*.[Dd][Ii][Tt]       binary
+*.[Hh][Ii][Vv]       binary
+*.[Kk][Dd][Bb][Xx]   binary
+*.[Pp]12             binary
+*.[Pp][Ff][Xx]       binary
+*.[Dd][Bb]           binary
+*.[Ss][Qq][Ll][Ii][Tt][Ee] binary

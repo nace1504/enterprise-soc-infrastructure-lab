@@ -1,0 +1,220 @@
+# =========================================================
+# Enterprise SOC Infrastructure Lab: .gitignore
+# Git áp dụng pattern khớp CUỐI CÙNG, nên thứ tự các khối có ý nghĩa:
+#   A: file phát sinh cục bộ
+#   B: file lớn và artifact máy ảo không chứa secret trực tiếp
+#   C: nhóm có ngoại lệ (template hoặc bản đã làm sạch *.sanitized.*, viết thường)
+#   D: LUÔN CHẶN, đặt cuối; không thêm ngoại lệ nào sau khối D
+# Mọi tên cần bảo vệ dùng lớp ký tự [Aa] cho TỪNG ký tự chữ, để chặn
+# mọi biến thể hoa/thường khi core.ignorecase=false (Linux).
+# Hậu tố .sanitized KHÔNG chứng minh nội dung đã sạch: vẫn phải review.
+# File không bị ignore KHÔNG đồng nghĩa với an toàn để commit (xem CLAUDE.md mục 13).
+# Gitignore không hỗ trợ chú thích cùng dòng với pattern.
+# =========================================================
+
+# ---------- A. File phát sinh cục bộ ----------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.code-workspace
+*.sublime-workspace
+.history/
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.~lock.*
+__pycache__/
+*.py[cod]
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+node_modules/
+# Thư mục build/tạm/môi trường chỉ bị chặn ở GỐC repository
+/build/
+/dist/
+/tmp/
+/temp/
+/[Ee][Nn][Vv]/
+/venv/
+/.venv/
+
+# ---------- B. File lớn và artifact máy ảo (không chứa secret trực tiếp) ----------
+*.vmx
+*.vmxf
+*.vmsd
+*.vmtm
+*.nvram
+*.lck/
+*.vmx.lck
+*.ovf
+*.[Ii][Ss][Oo]
+*.[Ii][Mm][Gg]
+
+# ---------- C. Nhóm có ngoại lệ (template hoặc bản đã làm sạch) ----------
+# File môi trường: chỉ cho phép template
+.[Ee][Nn][Vv]
+.[Ee][Nn][Vv].*
+*.[Ee][Nn][Vv]
+!.env.example
+*.[Tt][Ff][Vv][Aa][Rr][Ss]
+!*.tfvars.example
+
+# pfSense: chặn cấu hình gốc và backup ở mọi vị trí
+[Cc][Oo][Nn][Ff][Ii][Gg].[Xx][Mm][Ll]
+[Cc][Oo][Nn][Ff][Ii][Gg].[Xx][Mm][Ll].*
+[Cc][Oo][Nn][Ff][Ii][Gg]-*.[Xx][Mm][Ll]
+# Mọi XML có tên chứa "pfsense" (không phân biệt hoa/thường)
+*[Pp][Ff][Ss][Ee][Nn][Ss][Ee]*.[Xx][Mm][Ll]
+configs/pfsense/**/*.[Xx][Mm][Ll]
+# Chỉ bản đã làm sạch trong configs/pfsense/ được phép
+!configs/pfsense/**/*.sanitized.xml
+
+# Registry hive không đuôi; mở lại THƯ MỤC cùng tên (mẫu kết thúc bằng /)
+[Ss][Aa][Mm]
+[Ss][Yy][Ss][Tt][Ee][Mm]
+[Ss][Ee][Cc][Uu][Rr][Ii][Tt][Yy]
+![Ss][Aa][Mm]/
+![Ss][Yy][Ss][Tt][Ee][Mm]/
+![Ss][Ee][Cc][Uu][Rr][Ii][Tt][Yy]/
+
+# Bằng chứng CSV và log chặn mặc định; chỉ cho phép bản đã làm sạch trong evidence/
+# Thư mục raw/ bị chặn nguyên thư mục nên ngoại lệ không thể mở lại file bên trong.
+evidence/**/[Rr][Aa][Ww]/
+evidence/**/*.[Cc][Ss][Vv]
+*.[Ll][Oo][Gg]
+/logs/
+!evidence/**/*.sanitized.csv
+!evidence/**/*.sanitized.log
+
+# ---------- D. LUÔN CHẶN: không thêm ngoại lệ sau khối này ----------
+# Private key, chứng chỉ, kho khóa
+*.[Pp][Ee][Mm]
+*.[Kk][Ee][Yy]
+*.[Cc][Rr][Tt]
+*.[Cc][Ee][Rr]
+*.[Dd][Ee][Rr]
+*.[Cc][Ss][Rr]
+*.[Pp]12
+*.[Pp][Ff][Xx]
+*.[Jj][Kk][Ss]
+*.[Kk][Ee][Yy][Ss][Tt][Oo][Rr][Ee]
+*.[Tt][Rr][Uu][Ss][Tt][Ss][Tt][Oo][Rr][Ee]
+*.[Pp][Pp][Kk]
+[Ii][Dd]_[Rr][Ss][Aa]*
+[Ii][Dd]_[Ee][Dd]25519*
+[Ii][Dd]_[Ee][Cc][Dd][Ss][Aa]*
+
+# Secret, credential, kho mật khẩu
+[Ss][Ee][Cc][Rr][Ee][Tt][Ss]/
+*.[Ss][Ee][Cc][Rr][Ee][Tt]
+*.[Ss][Ee][Cc][Rr][Ee][Tt][Ss]
+*.[Kk][Dd][Bb][Xx]
+*.[Hh][Tt][Pp][Aa][Ss][Ss][Ww][Dd]
+*.[Oo][Vv][Pp][Nn]
+[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Jj][Ss][Oo][Nn]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Yy][Aa][Mm][Ll]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Yy][Mm][Ll]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Tt][Xx][Tt]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Cc][Ss][Vv]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Xx][Mm][Ll]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Ii][Nn][Ii]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Cc][Oo][Nn][Ff]
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Cc][Ff][Gg]
+# Log có tên chứa credentials bị chặn kể cả bản .sanitized.log
+*[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]*.[Ll][Oo][Gg]
+.[Gg][Ii][Tt]-[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll][Ss]
+.[Nn][Ee][Tt][Rr][Cc]
+_[Nn][Ee][Tt][Rr][Cc]
+.[Pp][Gg][Pp][Aa][Ss][Ss]
+.[Mm][Yy].[Cc][Nn][Ff]
+*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]*.[Tt][Xx][Tt]
+*[Pp][Aa][Ss][Ss][Ww][Dd]*.[Tt][Xx][Tt]
+# CSV mật khẩu: chỉ chặn tên rõ ràng (passwords.csv, password-list.csv),
+# không chặn bằng chứng hợp lệ chỉ vì có chữ "password" trong tên
+*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd][Ss].[Cc][Ss][Vv]
+*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]-[Ll][Ii][Ss][Tt].[Cc][Ss][Vv]
+*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd][Ss]*.[Cc][Ss][Vv]
+
+# Wazuh (danh sách là giả định thiết kế; CHƯA đối chiếu tài liệu chính thức)
+[Ww][Aa][Zz][Uu][Hh]-[Ii][Nn][Ss][Tt][Aa][Ll][Ll]-[Ff][Ii][Ll][Ee][Ss]/
+[Ii][Nn][Tt][Ee][Rr][Nn][Aa][Ll]_[Uu][Ss][Ee][Rr][Ss].[Yy]*[Mm][Ll]
+[Ww][Aa][Zz][Uu][Hh].[Yy]*[Mm][Ll]
+[Cc][Ll][Ii][Ee][Nn][Tt].[Kk][Ee][Yy][Ss]
+[Aa][Uu][Tt][Hh][Dd].[Pp][Aa][Ss][Ss]
+
+# DVWA / Docker (file compose chính KHÔNG bị chặn; phải dùng ${VAR} và review)
+[Cc][Oo][Nn][Ff][Ii][Gg].[Ii][Nn][Cc].[Pp][Hh][Pp]
+[Dd][Oo][Cc][Kk][Ee][Rr]-[Cc][Oo][Mm][Pp][Oo][Ss][Ee].[Oo][Vv][Ee][Rr][Rr][Ii][Dd][Ee].[Yy]*[Mm][Ll]
+[Cc][Oo][Mm][Pp][Oo][Ss][Ee].[Oo][Vv][Ee][Rr][Rr][Ii][Dd][Ee].[Yy]*[Mm][Ll]
+
+# Active Directory, Kerberos, registry, file cài đặt Windows
+[Aa][Dd]-[Bb][Aa][Cc][Kk][Uu][Pp]/
+[Ww][Ii][Nn][Dd][Oo][Ww][Ss][Ii][Mm][Aa][Gg][Ee][Bb][Aa][Cc][Kk][Uu][Pp]/
+*.[Dd][Ii][Tt]
+*.[Jj][Ff][Mm]
+[Ee][Dd][Bb]*.[Cc][Hh][Kk]
+*.[Hh][Ii][Vv]
+[Nn][Tt][Uu][Ss][Ee][Rr].[Dd][Aa][Tt]*
+[Uu][Ss][Rr][Cc][Ll][Aa][Ss][Ss].[Dd][Aa][Tt]*
+*.[Kk][Ee][Yy][Tt][Aa][Bb]
+*.[Kk][Ii][Rr][Bb][Ii]
+*.[Cc][Cc][Aa][Cc][Hh][Ee]
+[Kk][Rr][Bb]5[Cc][Cc]_*
+# Registry export; template dùng *.reg.template (không khớp pattern này)
+*.[Rr][Ee][Gg]
+[Uu][Nn][Aa][Tt][Tt][Ee][Nn][Dd]*.[Xx][Mm][Ll]
+[Aa][Uu][Tt][Oo][Uu][Nn][Aa][Tt][Tt][Ee][Nn][Dd]*.[Xx][Mm][Ll]
+*.[Cc][Ll][Ii][Xx][Mm][Ll]
+*.[Rr][Dd][Pp]
+
+# Database, browser capture, packet capture, log hệ thống Windows
+*.[Ss][Qq][Ll]
+*.[Ss][Qq][Ll][Ii][Tt][Ee]
+*.[Ss][Qq][Ll][Ii][Tt][Ee]3
+*.[Dd][Bb]
+*.[Dd][Bb]-[Jj][Oo][Uu][Rr][Nn][Aa][Ll]
+*.[Dd][Bb]-[Ww][Aa][Ll]
+*.[Hh][Aa][Rr]
+*.[Pp][Cc][Aa][Pp]
+*.[Pp][Cc][Aa][Pp][Nn][Gg]
+*.[Cc][Aa][Pp]
+*.[Ee][Vv][Tt][Xx]
+*.[Ee][Tt][Ll]
+
+# Memory dump, ổ đĩa và bộ nhớ máy ảo
+*.[Dd][Mm][Pp]
+*.[Dd][Uu][Mm][Pp]
+*.[Mm][Ee][Mm]
+*.[Vv][Mm][Ee][Mm]
+*.[Vv][Mm][Ss][Nn]
+*.[Vv][Mm][Ss][Ss]
+*.[Vv][Mm][Dd][Kk]
+*.[Vv][Hh][Dd]
+*.[Vv][Hh][Dd][Xx]
+*.[Vv][Dd][Ii]
+*.[Qq][Cc][Oo][Ww]2
+*.[Oo][Vv][Aa]
+
+# Backup và file nén
+*.[Bb][Aa][Kk]
+*.[Zz][Ii][Pp]
+*.7[Zz]
+*.[Rr][Aa][Rr]
+*.[Tt][Aa][Rr]
+*.[Tt][Gg][Zz]
+*.[Gg][Zz]
+*.[Bb][Zz]2
+*.[Xx][Zz]
