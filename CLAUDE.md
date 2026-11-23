@@ -7,7 +7,7 @@ Hướng dẫn dành cho Claude Code (và mọi trợ lý AI) khi làm việc tr
 - **Tên:** Enterprise SOC Infrastructure Lab
 - **Repository:** `enterprise-soc-infrastructure-lab`
 - **Kiến trúc:** Local-first, Cloud-ready / Hybrid-ready
-- **Giai đoạn (milestone) hiện tại:** Khởi tạo (Bootstrap). Chỉ có cấu trúc và quy tắc quản lý. Chưa có thành phần nào được thực hiện trong lab.
+- **Giai đoạn (milestone) hiện tại:** M0 – Project Initiation (khởi động dự án), **chưa hoàn thành**. Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc repository và quy tắc quản lý, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện trong lab. Kế hoạch milestone và điều kiện hoàn thành M0 xem `docs/01-planning/project-charter.md`, mục 15.
 
 Workspace này hoàn toàn độc lập. Mọi workspace hoặc dự án cũ nằm ngoài thư mục repository này là **dự án riêng** và phải được bảo vệ: không truy cập (đọc, sửa, di chuyển, xóa hoặc đổi tên) và không dùng lại thiết lập hay cấu hình Claude của chúng nếu chủ sở hữu chưa yêu cầu hoặc cho phép rõ ràng. Không ghi đường dẫn tuyệt đối của máy cá nhân vào tài liệu được chia sẻ.
 
@@ -56,6 +56,7 @@ Cách viết:
 | implement | thực hiện, cấu hình; tương ứng nhãn Implemented |
 | validation / validate | kiểm tra tính hợp lệ (validation): đánh giá tính hợp lệ hoặc sự phù hợp với yêu cầu. Tên thư mục `scripts/validation/` giữ nguyên và là tên nhóm script (xem mục 13) |
 | verification / verify | xác minh (verification): xác nhận kết quả bằng phương pháp kiểm tra và bằng chứng; đạt đủ điều kiện mới gắn nhãn Verified. Không dùng "validate" theo nghĩa này |
+| Validation (trong nhãn đã duyệt) | Trong các nhãn OBJ-06 – Security Validation, M7 – Validation và nguyên tắc Evidence-based Validation của Project Charter, giữ nguyên "Validation" làm nhãn; nghĩa là kiểm thử và xác minh theo mục 6, không phải kiểm tra tính hợp lệ |
 | test, test case | kiểm thử; "test case" giữ nguyên |
 | Proposed / Implemented / Verified | giữ nguyên làm nhãn trạng thái của thành phần, cấu hình và kết quả kiểm thử (xem mục 6); không dùng làm vòng đời ADR |
 | Proposed / Accepted / Rejected / Superseded | giữ nguyên làm trạng thái vòng đời ADR (xem mục 4.3) |
@@ -63,7 +64,19 @@ Cách viết:
 | test script, fixture | giữ nguyên; là mã và dữ liệu phục vụ thực thi kiểm thử trong `tests/` |
 | UNKNOWN / UNDECIDED / TBD | giữ nguyên: UNKNOWN là chưa có thông tin; UNDECIDED là quyết định chưa chốt; TBD là giá trị sẽ xác định sau |
 | Proposed convention | quy ước đề xuất, chưa được chủ sở hữu phê duyệt |
-| milestone | giai đoạn (milestone): mốc tiến độ của dự án, ví dụ Khởi tạo (Bootstrap) |
+| milestone | giai đoạn (milestone): mốc tiến độ của dự án, ví dụ M0 – Project Initiation. Danh sách milestone xem `docs/01-planning/project-charter.md`, mục 15 |
+| Bootstrap | Khởi tạo (Bootstrap): hoạt động chuẩn bị repository và quy trình làm việc; không phải milestone |
+| Project Initiation (M0) | khởi động dự án (Project Initiation); không gọi là "khởi tạo" để tránh trùng với Bootstrap |
+| Project Charter | Project Charter (điều lệ dự án) |
+| Project Owner, Owner | chủ sở hữu (Project Owner) |
+| deliverable | deliverable (sản phẩm bàn giao); mã `D-NN` theo Project Charter |
+| baseline | baseline (phiên bản cơ sở đã được duyệt) |
+| acceptance criteria | tiêu chí chấp nhận (acceptance criteria) |
+| exit condition | điều kiện hoàn thành (exit condition) của milestone |
+| telemetry | dữ liệu đo lường (telemetry); "security telemetry" là dữ liệu đo lường bảo mật |
+| Defense in Depth | phòng thủ nhiều lớp (Defense in Depth) |
+| trust boundary | ranh giới tin cậy (trust boundary) |
+| NIC mapping | ánh xạ card mạng (NIC mapping) |
 | (thư mục `docs/NN-*`) | nhóm tài liệu, ví dụ `docs/03-architecture-design/`. Không gọi là "giai đoạn" |
 | Domain Controller (DC) | giữ nguyên |
 | WAF, SIEM, SOC, ADR, VM | giữ nguyên; VM có thể viết "máy ảo" |
@@ -75,7 +88,7 @@ Cách viết:
 2. Tường lửa pfSense
 3. Phân đoạn mạng WAN, DMZ, LAN và SOC
 4. ModSecurity WAF
-5. Backend DVWA chạy trong container riêng, trên cùng máy ảo Ubuntu với WAF
+5. Backend DVWA chạy trong container riêng, trên cùng máy ảo Ubuntu với WAF; WAF cũng chạy trong container riêng
 6. Một Domain Controller Windows Server Active Directory
 7. Wazuh SIEM All-in-One
 
@@ -91,7 +104,7 @@ Cách viết:
 | Mục tiêu tích hợp | Tích hợp chung với các thành viên khác trong nhóm |
 | Cấp phát tài nguyên cloud | **Không** trong giai đoạn (milestone) hiện tại |
 | Phân đoạn mạng | Bốn phân đoạn: WAN, DMZ, LAN, SOC. Không thêm phân đoạn khác khi chưa có ADR được chủ sở hữu phê duyệt |
-| Mô hình WAF/DVWA | WAF và DVWA trên một máy ảo Ubuntu; DVWA trong container riêng, đứng sau WAF |
+| Mô hình WAF/DVWA | WAF và DVWA trên một máy ảo Ubuntu, mỗi thành phần chạy trong container riêng; DVWA đứng sau WAF và chỉ được truy cập qua WAF |
 | Domain Controller | Đúng một DC Windows Server AD |
 | Mô hình triển khai SIEM | Wazuh All-in-One |
 

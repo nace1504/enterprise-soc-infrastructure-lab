@@ -2,7 +2,7 @@
 
 Phòng lab xây dựng một hệ thống mạng doanh nghiệp được phân đoạn, có giám sát an ninh. Hệ thống dự kiến được xây dựng và triển khai trên máy cục bộ trước, còn thiết kế được giữ trung lập với nhà cung cấp để sau này có thể chuyển lên cloud hoặc mô hình hybrid.
 
-> **Giai đoạn (milestone) hiện tại: Khởi tạo (Bootstrap).** Chưa có thành phần nào được thực hiện (Implemented) hoặc xác minh (Verified). Repository hiện chỉ gồm cấu trúc dự án và các quy tắc làm việc.
+> **Giai đoạn (milestone) hiện tại: M0 – Project Initiation (khởi động dự án), chưa hoàn thành.** Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc dự án và các quy tắc làm việc, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện (Implemented) hoặc xác minh (Verified). Kế hoạch milestone xem [`docs/01-planning/project-charter.md`](docs/01-planning/project-charter.md).
 
 ## Phạm vi
 
@@ -11,7 +11,7 @@ Phòng lab xây dựng một hệ thống mạng doanh nghiệp được phân �
 | 1 | VMware Workstation | Nền tảng ảo hóa cục bộ | Proposed |
 | 2 | pfSense | Tường lửa (firewall) biên và định tuyến giữa các phân đoạn mạng | Proposed |
 | 3 | Phân đoạn mạng | Bốn phân đoạn WAN, DMZ, LAN, SOC (không có phân đoạn quản trị riêng, xem quyết định còn mở) | Proposed |
-| 4 | ModSecurity WAF | Reverse proxy và WAF đứng trước DVWA | Proposed |
+| 4 | ModSecurity WAF | Reverse proxy và WAF đứng trước DVWA, chạy trong container riêng trên máy ảo Ubuntu | Proposed |
 | 5 | DVWA | Ứng dụng web có lỗ hổng cố ý, chạy trong container riêng trên cùng máy ảo Ubuntu với WAF | Proposed |
 | 6 | Windows Server AD DS | Một Domain Controller Active Directory | Proposed |
 | 7 | Wazuh | SIEM dạng All-in-One (indexer, server, dashboard) | Proposed |
