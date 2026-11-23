@@ -4,8 +4,8 @@
 |------------|---------|
 | Project ID | ESIL-001 |
 | Tài liệu | Project Charter (điều lệ dự án) |
-| Phiên bản | 0.3 |
-| Trạng thái | Draft – Pending Final Owner Approval |
+| Phiên bản | 1.0 |
+| Trạng thái | Approved – Owner phê duyệt ngày 2026-11-23 |
 | Deliverable | D-01 |
 
 Chi tiết metadata xem [mục 17](#17-metadata-tài-liệu).
@@ -500,11 +500,11 @@ Dự án không có hạn chót cố định. Mỗi milestone chỉ kết thúc 
 | M7 – Validation | Các test case được thực thi, có bằng chứng |
 | M8 – Project Closure | Tài liệu và báo cáo cuối cùng được rà soát |
 
-Tại thời điểm lập tài liệu này, **chưa** có milestone nào hoàn thành, kể cả M0 và M1.
+Tình trạng milestone tại phiên bản 1.0: **M0 đã hoàn thành** (xem [mục 15.1](#151-điều-kiện-khởi-động-dự-án-m0)). Milestone hiện tại là **M1 – Planning Baseline**, chưa hoàn thành. Các milestone M2 → M8 chưa bắt đầu.
 
 ### 15.1. Điều kiện khởi động dự án (M0)
 
-M0 chỉ hoàn thành khi Owner xác nhận **toàn bộ** các điều kiện dưới đây. Bảng này chỉ định nghĩa điều kiện, không ghi nhận trạng thái hoàn thành.
+M0 chỉ hoàn thành khi Owner xác nhận **toàn bộ** các điều kiện dưới đây. Bảng định nghĩa điều kiện; kết quả xác nhận được ghi ngay sau bảng.
 
 | ID | Điều kiện | Ghi chú |
 |----|-----------|---------|
@@ -515,13 +515,15 @@ M0 chỉ hoàn thành khi Owner xác nhận **toàn bộ** các điều kiện d
 | IC-05 | Project Charter được Owner phê duyệt cuối cùng (phiên bản 1.0) và được commit vào repository | Điều kiện chốt của M0 |
 | IC-06 | Owner xác nhận chế độ hiển thị (visibility) của repository: public hoặc private | Theo [mục 14.1](#141-thẩm-quyền-quyết-định), công khai artifact phải được Owner phê duyệt |
 
+**Ghi nhận hoàn thành M0.** Ngày 2026-11-23, Owner phê duyệt Project Charter phiên bản 1.0 và xác nhận đủ các điều kiện IC-01 → IC-06. Với IC-06, Owner xác nhận giữ repository ở chế độ **public**. Bản 1.0 được commit vào repository cùng với ghi nhận này (IC-05).
+
 Giấy phép (license) **không** là điều kiện của M0. License tiếp tục ở trạng thái **UNDECIDED** và được theo dõi như một quyết định còn mở trong `CLAUDE.md` mục 4.2.
 
 ## 16. Phê duyệt
 
 | Vai trò | Họ tên | Trạng thái |
 |---------|--------|------------|
-| Project Owner | Doãn Hữu Nguyên | Đã phê duyệt định hướng, phạm vi và tiêu chí thành công; phê duyệt cuối cùng cho tài liệu đang chờ |
+| Project Owner | Doãn Hữu Nguyên | Approved: đã phê duyệt phiên bản 1.0 ngày 2026-11-23 |
 | Reviewer / Supervisor | TBD | Pending |
 
 Việc phê duyệt Project Charter xác lập định hướng dự án và cho phép các hoạt động lập kế hoạch. Phê duyệt này **không** tự động chốt các quyết định kiến trúc còn mở và **không** cho phép triển khai hạ tầng.
@@ -532,8 +534,8 @@ Việc phê duyệt Project Charter xác lập định hướng dự án và cho
 |------------|---------|
 | Project ID | ESIL-001 |
 | Tài liệu | Project Charter |
-| Phiên bản | 0.3 |
-| Trạng thái | Draft – Pending Final Owner Approval |
+| Phiên bản | 1.0 |
+| Trạng thái | Approved – Owner phê duyệt ngày 2026-11-23 |
 | Đường dẫn | `docs/01-planning/project-charter.md` |
 | Cách tiếp cận lập kế hoạch | Quality-driven, milestone-based |
 | Ngày hoàn thành mục tiêu | Không cố định |
@@ -546,3 +548,4 @@ Việc phê duyệt Project Charter xác lập định hướng dự án và cho
 |-----------|------|----------|
 | 0.2 | 2026-11-23 | Bản nháp đầu tiên, tạo từ đặc tả nguồn của Owner |
 | 0.3 | 2026-11-23 | Sửa theo kết quả rà soát C-01 → C-06: tách quyết định kiến trúc, trạng thái thực hiện và trạng thái xác minh; tách hai hệ trạng thái ở mục 14.3; làm rõ ranh giới truy cập DVWA Backend; làm rõ trạng thái Management Segment; bỏ tham chiếu WS6; phân biệt Bootstrap và M0. Bổ sung điều kiện khởi động dự án (mục 15.1), ghi chú thuật ngữ "Validation", quy ước phiên bản và lịch sử thay đổi |
+| 1.0 | 2026-11-23 | Owner phê duyệt bản cuối. Ghi nhận M0 hoàn thành (IC-01 → IC-06, repository giữ public); milestone hiện tại chuyển sang M1. Nội dung khác không đổi so với 0.3 |

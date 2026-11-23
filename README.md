@@ -2,7 +2,7 @@
 
 Phòng lab xây dựng một hệ thống mạng doanh nghiệp được phân đoạn, có giám sát an ninh. Hệ thống dự kiến được xây dựng và triển khai trên máy cục bộ trước, còn thiết kế được giữ trung lập với nhà cung cấp để sau này có thể chuyển lên cloud hoặc mô hình hybrid.
 
-> **Giai đoạn (milestone) hiện tại: M0 – Project Initiation (khởi động dự án), chưa hoàn thành.** Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc dự án và các quy tắc làm việc, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện (Implemented) hoặc xác minh (Verified). Kế hoạch milestone xem [`docs/01-planning/project-charter.md`](docs/01-planning/project-charter.md).
+> **Giai đoạn (milestone) hiện tại: M1 – Planning Baseline, chưa hoàn thành.** M0 – Project Initiation (khởi động dự án) đã hoàn thành khi Owner phê duyệt Project Charter v1.0. Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc dự án và các quy tắc làm việc, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện (Implemented) hoặc xác minh (Verified). Kế hoạch milestone xem [`docs/01-planning/project-charter.md`](docs/01-planning/project-charter.md).
 
 ## Phạm vi
 

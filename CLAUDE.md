@@ -7,7 +7,7 @@ Hướng dẫn dành cho Claude Code (và mọi trợ lý AI) khi làm việc tr
 - **Tên:** Enterprise SOC Infrastructure Lab
 - **Repository:** `enterprise-soc-infrastructure-lab`
 - **Kiến trúc:** Local-first, Cloud-ready / Hybrid-ready
-- **Giai đoạn (milestone) hiện tại:** M0 – Project Initiation (khởi động dự án), **chưa hoàn thành**. Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc repository và quy tắc quản lý, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện trong lab. Kế hoạch milestone và điều kiện hoàn thành M0 xem `docs/01-planning/project-charter.md`, mục 15.
+- **Giai đoạn (milestone) hiện tại:** M1 – Planning Baseline, **chưa hoàn thành**. M0 – Project Initiation (khởi động dự án) đã hoàn thành ngày 2026-11-23 khi Owner phê duyệt Project Charter v1.0. Hoạt động Khởi tạo (Bootstrap), tức chuẩn bị cấu trúc repository và quy tắc quản lý, đã được thực hiện; Bootstrap không phải là milestone. Chưa có thành phần nào được thực hiện trong lab. Kế hoạch milestone xem `docs/01-planning/project-charter.md`, mục 15.
 
 Workspace này hoàn toàn độc lập. Mọi workspace hoặc dự án cũ nằm ngoài thư mục repository này là **dự án riêng** và phải được bảo vệ: không truy cập (đọc, sửa, di chuyển, xóa hoặc đổi tên) và không dùng lại thiết lập hay cấu hình Claude của chúng nếu chủ sở hữu chưa yêu cầu hoặc cho phép rõ ràng. Không ghi đường dẫn tuyệt đối của máy cá nhân vào tài liệu được chia sẻ.
 
